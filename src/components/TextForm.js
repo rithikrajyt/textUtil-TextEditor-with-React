@@ -21,23 +21,35 @@ export default function TextForm(props){
         let newtext2 = text.toLowerCase();
         setText(newtext2);
     }
+    const handleCopy = ()=>{
+        let text = document.getElementById("myBox");
+        text.select();
+        navigator.clipboard.writeText(text.value);
+    }
+
+    const handleExtraSpaces =()=>{
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
     const [text, setText] = useState('');
     
     return(
         <>
-        <div className='container'>
-            <h1>{props.heading}</h1>
+        <div className='container' style={{color: props.mode ==='dark'?'white':'grey'}}>
+            <h1 style={{color: props.mode ==='dark'?'white':'grey'}}>{props.heading}</h1>
             <form>
             <div className="form-group">
-    <textarea className="form-control" value={text} onChange={handleOnChange}  id="exampleFormControlTextarea1" rows="8"></textarea>
+    <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode ==='dark'?'grey':'white'}} id="myBox" rows="8"></textarea>
   </div>
   </form>
-  <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Upper Case</button>
+  <button className="btn btn-primary mx-2 my-3" onClick={handleUpClick}>Convert to Upper Case</button>
 
-  <button className="btn btn-primary mx-2" onClick={handleDownClick}>Convert to Lower Case</button>
-  <button className="btn btn-primary mx-2" onClick={clearText}>Clear Text</button>
+  <button className="btn btn-primary mx-2 my-3" onClick={handleDownClick}>Convert to Lower Case</button>
+  <button className="btn btn-primary mx-2 my-3" onClick={clearText}>Clear Text</button>
+  <button className="btn btn-primary mx-2 my-3" onClick={handleCopy}>Copy</button>
+  <button className="btn btn-primary mx-2 my-3" onClick={handleExtraSpaces}>Remove extra spaces</button>
         </div>
-        <div className='container my-3'>
+        <div className='container my-3 ' style={{color: props.mode ==='dark'?'white':'grey'}}>
             <h1>Your Text Summary</h1>
             <p>{text.split(" ").length } words and {text.length} characters</p>
             <p>{0.008*text.split(" ").length } Minutes to read the paragraph</p>
