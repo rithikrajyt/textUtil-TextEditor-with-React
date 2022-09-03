@@ -35,11 +35,11 @@ export default function TextForm(props){
     
     return(
         <>
-        <div className='container' style={{color: props.mode ==='dark'?'white':'grey'}}>
-            <h1 style={{color: props.mode ==='dark'?'white':'grey'}}>{props.heading}</h1>
+        <div className='container' style={{color: props.mode ==='dark'?'white':'#042743'}}>
+            <h1 style={{color: props.mode ==='dark'?'white':'#042743'}}>{props.heading}</h1>
             <form>
             <div className="form-group">
-    <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode ==='dark'?'grey':'white'}} id="myBox" rows="8"></textarea>
+    <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode ==='dark'?'#042743':'white',color: props.mode ==='dark'?'white':'#042743'}} id="myBox" rows="8"></textarea>
   </div>
   </form>
   <button className="btn btn-primary mx-2 my-3" onClick={handleUpClick}>Convert to Upper Case</button>
@@ -49,7 +49,7 @@ export default function TextForm(props){
   <button className="btn btn-primary mx-2 my-3" onClick={handleCopy}>Copy</button>
   <button className="btn btn-primary mx-2 my-3" onClick={handleExtraSpaces}>Remove extra spaces</button>
         </div>
-        <div className='container my-3 ' style={{color: props.mode ==='dark'?'white':'grey'}}>
+        <div className='container my-3 ' style={{color: props.mode ==='dark'?'white':'#042743'}}>
             <h1>Your Text Summary</h1>
             <p>{text.split(" ").length } words and {text.length} characters</p>
             <p>{0.008*text.split(" ").length } Minutes to read the paragraph</p>
